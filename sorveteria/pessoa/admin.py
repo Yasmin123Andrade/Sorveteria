@@ -1,5 +1,11 @@
 from django.contrib import admin
+from .models import *
 
-from .models import Question
-
-admin.site.register(Question)
+admin.site.register(Embalagem)
+admin.site.register(TipoSabor)
+admin.site.register(Sabor)
+admin.site.register(Cobertura)
+admin.site.register(MontaPote)
+admin.site.register(SelSabor)
+admin.site.register(SacolaItens)
+admin.site.register(Pedido)
