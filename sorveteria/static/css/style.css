@@ -406,6 +406,41 @@ button {
     width: 100%;
     float: left;
 }
+/* Container da imagem precisa de posição relativa */
+.about_img {
+    width: 100%;
+    float: left;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+/* Círculo ROSA principal atrás da imagem */
+.about_img::before {
+    content: '';
+    position: absolute;
+    width: 320px;            /* Largura do círculo rosa */
+    height: 320px;           /* Altura do círculo rosa */
+    background-color: #ffb6c1; /* Cor rosa do fundo */
+    border-radius: 50%;      /* Mantém redondo */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza atrás do taça/sorvete */
+    z-index: -1;             /* Fica atrás do sorvete */
+}
+
+/* Círculo AMARELO de detalhe (caso o modelo original tenha dois círculos) */
+.about_img::after {
+    content: '';
+    position: absolute;
+    width: 180px;            /* Largura do detalhe amarelo */
+    height: 180px;           /* Altura do detalhe amarelo */
+    background-color: #fceecb; /* Cor amarela suave */
+    border-radius: 50%;
+    top: 10%;
+    left: 15%;
+    z-index: -2;             /* Fica atrás do círculo rosa */
+}
 
 .read_bt_1 {
     width: 180px;
