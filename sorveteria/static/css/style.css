@@ -210,20 +210,22 @@ button {
 }
 
 
-/* header section start */
+/* header section  */
 
 .header_section {
     width: 100%;
     float: left;
     background-image: url(../images/banner-bg.png);
     height: auto;
-    background-size: 100%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
+    position: relative;  /* IMPORTANTE: z-index precisa de position relative ou absolute */
+    z-index: 1;          /* Esta é a camada mais baixa */
 }
 
+
 .header_bg {
-    background: #ffffff;
-    border-bottom: 1px solid #fc95c4;
+background-color: transparent !important;
 }
 
 .bg-light {
@@ -296,6 +298,7 @@ button {
     float: left;
     padding: 90px 0px 145px 0px;
 }
+
 
 .banner_taital {
     width: 30%;
