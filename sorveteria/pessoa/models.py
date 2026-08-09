@@ -2,119 +2,63 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Embalagem(models.Model):
-    tipo = models.CharField(max_length=100)
-    capacidade_maxima_bolas = models.PositiveIntegerField()
-    ativo = models.BooleanField()
-    preco = models.DecimalField(max_digits=10, decimal_places=2)
+class Pessoa(models.Model):
+    # Relacionamento 1:1 com o User do Django (herança/associação com django.contrib.auth)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='pessoa')
+    cpf = models.CharField(max_length=14, unique=True)
+    nome = models.CharField(max_length=150)
+    telefone = models.CharField(max_length=20)
+    email = models.EmailField(unique=True)
 
-    def preco_formatado(self):
-        return f'R$ {self.preco:.2f}'
-
-    def __str__(self):
-        return f'{self.tipo} | PREÇO: R$ {self.preco:.2f}'
-
-    class Meta:
-        verbose_name = '1 - Embalagem'
-        verbose_name_plural = '1 - Embalagem'
+    def _str_(self):
+        return f"{self.nome} (CPF: {self.cpf})"
 
 
-class TipoSabor(models.Model):
-    tipo = models.CharField(max_length=100)
-    ativo = models.BooleanField()
-    preco = models.DecimalField(max_digits=10, decimal_places=2)
+class Endereco(models.Model):
+    # Relacionamento 1:1 com Pessoa
+    pessoa = models.OneToOneField(Pessoa, on_delete=models.CASCADE, related_name='endereco', primary_key=True)
+    cidade = models.CharField(max_length=100)
+    numero = models.IntegerField()
+    rua = models.CharField(max_length=150)
+    bairro = models.CharField(max_length=100)
+    cep = models.CharField(max_length=10)
+    estado = models.CharField(max_length=50)
 
-    def preco_formatado(self):
-        return f'R$ {self.preco:.2f}'
-
-    def __str__(self):
-        return f'{self.tipo} | PREÇO: R$ {self.preco:.2f}'
-
-    class Meta:
-        verbose_name = '2 - TipoSabor'
-        verbose_name_plural = '2 - TipoSabor'
-
-
-class Sabor(models.Model):
-    nome = models.CharField(max_length=50)
-    tipo = models.ForeignKey(TipoSabor, related_name='tipo_sabor', on_delete=models.CASCADE)
-    ativo = models.BooleanField()
-
-    def __str__(self):
-        return f'{self.nome} | PREÇO: R$ {self.tipo.preco:.2f}'
-
-    class Meta:
-        verbose_name = '3 - Sabor'
-        verbose_name_plural = '3 - Sabor'
-
-
-class Cobertura(models.Model):
-    nome = models.CharField(max_length=50)
-    ativo = models.BooleanField()
-    preco = models.DecimalField(max_digits=10, decimal_places=2)
-
-    def preco_formatado(self):
-        return f'R$ {self.preco:.2f}'
-
-    def __str__(self):
-        return f'{self.nome} | PREÇO: R$ {self.preco:.2f}'
-
-    class Meta:
-        verbose_name = '4 - Cobertura'
-        verbose_name_plural = '4 - Cobertura'
-
-
-class MontaPote(models.Model):
-    embalagem = models.ForeignKey(Embalagem, related_name='embalagem', on_delete=models.CASCADE, null=True)
-    coberturas = models.ManyToManyField(Cobertura)
-    quantidade = models.PositiveIntegerField(null=True)
-
-    def __str__(self):
-        return f"ID: {self.id} / POTE: {self.embalagem.tipo} / Qtd: {self.quantidade}"
-
-    class Meta:
-        verbose_name = 'B - MontaPote'
-        verbose_name_plural = 'B - MontaPote'
-
-
-class SelSabor(models.Model):
-    pote = models.ForeignKey(MontaPote, related_name='pote', on_delete=models.CASCADE, null=True)
-    sabor = models.ForeignKey(Sabor, related_name='sabor', on_delete=models.CASCADE, null=True)
-    quantidade_bolas = models.PositiveIntegerField()
-
-    def __str__(self):
-        return f"Sabor: {self.sabor.nome}, Quantidade de Bolas: {self.quantidade_bolas}"
-
-    class Meta:
-        verbose_name = 'A - SelSabor'
-        verbose_name_plural = 'A - SelSabor'
-
-
-class SacolaItens(models.Model):
-    potes = models.ManyToManyField(MontaPote)
-    preco = models.DecimalField(max_digits=10, decimal_places=2, null=True)
-
-    def preco_formatado(self):
-        return f'R$ {self.preco:.2f}'
-
-    def __str__(self):
-        return f"CARINHO: {self.id}"
-
-    class Meta:
-        verbose_name = 'C - SacolaItens'
-        verbose_name_plural = 'C - SacolaItens'
+    def _str_(self):
+        return f"{self.rua}, {self.numero} - {self.cidade}/{self.estado}"
 
 
 class Pedido(models.Model):
-    data_pedido = models.DateTimeField(auto_now_add=True, null=True)
-    user = models.ForeignKey(User, related_name='pedido_user', on_delete=models.PROTECT)
-    itens_da_sacola = models.OneToOneField(SacolaItens, on_delete=models.CASCADE, null=True)
-    status = models.BooleanField()
-    pago = models.BooleanField()
+    # Relacionamento 1:N com Pessoa (Uma Pessoa faz vários Pedidos)
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE, related_name='pedidos')
+    data_pedido = models.DateField(auto_now_add=True)
+    valor_total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    forma_pagamento = models.CharField(max_length=50)
 
-    def __str__(self):
-        return f"Pedido: {self.id} / {self.user} / (PAGO: {self.pago})"
+    # Relacionamento N:N com Produto através da tabela intermediária PedidoProduto
+    produtos = models.ManyToManyField('Produto', through='PedidoProduto', related_name='pedidos')
 
-    class Meta:
-        verbose_name = 'D - Pedido'
-        verbose_name_plural = 'D - Pedido'
+    def _str_(self):
+        return f"Pedido #{self.id} - {self.pessoa.nome}"
+
+
+class Produto(models.Model):
+    descricao = models.CharField(max_length=255)
+    valor = models.DecimalField(max_digits=10, decimal_places=2)
+    categoria = models.CharField(max_length=100)
+
+    def _str_(self):
+        return f"{self.descricao} - R$ {self.valor:.2f}"
+
+
+class PedidoProduto(models.Model):
+    """
+    Tabela Intermediária (N:N) entre Pedido e Produto com atributos adicionais.
+    """
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE, related_name='itens')
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE, related_name='pedidos_item')
+    quantidade_produto = models.IntegerField(default=1)
+    preco_total = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def _str_(self):
+        return f"{self.quantidade_produto}x {self.produto.descricao} (Pedido #{self.pedido.id})"
