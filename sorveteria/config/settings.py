@@ -40,10 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # Adicione seus apps aqui (substitua pelos nomes exatos das suas pastas):
     'pessoa',
     'pagamentos',
+    'produtos',
+    'pedidos',
 ]
 
 MIDDLEWARE = [
