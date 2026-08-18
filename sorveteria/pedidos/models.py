@@ -10,12 +10,6 @@ class Pedidos(models.Model):
     status = models.CharField(max_length=50)
     data_pedido = models.DateField()
 
-   
-    produtos = models.ManyToManyField(
-        'produtos.Produto', 
-        through='Pedido_Produto',
-        related_name='pedidos'
-    )
 
     def __str__(self):
         return f"Pedido {self.id} - Status: {self.status}"
