@@ -1,3 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Produto
+from .forms import ProdutoForm
 
-# Create your views here.
+def lista_produtos(request):
+    produtos = Produto.objects.all()
+    return render(request, 'produtos/lista_produtos.html', {'produtos': produtos})
+
+def criar_produto(request):
+    if request.method == 'POST':
+        form = ProdutoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_produtos')
+    else:
+        form = ProdutoForm()
+    return render(request, 'produtos/criar_produto.html', {'form': form})

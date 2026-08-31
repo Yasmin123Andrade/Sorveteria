@@ -1,25 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Pessoa
+from .forms import PessoaForm
 
+def lista_pessoas(request):
+    pessoas = Pessoa.objects.all()
+    return render(request, 'pessoa/lista_pessoas.html', {'pessoas': pessoas})
 
-def home(request):
-    return render(request, 'index.html')
-
-
-def about(request):
-    return render(request, 'about.html')
-
-
-def icecream(request):
-    return render(request, 'icecream.html')
-
-
-def services(request):
-    return render(request, 'services.html')
-
-
-def blog(request):
-    return render(request, 'blog.html')
-
-
-def contact(request):
-    return render(request, 'contact.html')
+def criar_pessoa(request):
+    if request.method == 'POST':
+        form = PessoaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_pessoas')
+    else:
+        form = PessoaForm()
+    return render(request, 'pessoa/criar_pessoa.html', {'form': form})
