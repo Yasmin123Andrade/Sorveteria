@@ -1,4 +1,6 @@
 from django.contrib import admin
-from .models import Pessoa  # e os outros modelos do app pessoa
+from .models import Pessoa # e os outros modelos do app pessoa
 
-admin.site.register(Pessoa)
+@admin.register(Pessoa)
+class PessoasAdmin(admin.ModelAdmin):
+    list_display = ('cpf', 'nome', 'telefone', 'rua', 'bairro', 'numero', 'cep', 'cidade', 'estado')

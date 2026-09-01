@@ -8,7 +8,7 @@
     <h1>Pagamentos Registrados</h1>
     <ul>
         {% for pagamento in pagamentos %}
-            <li>Pagamento #{{ pagamento.id }} - Valor: R$ {{ pagamento.valor }}</li>
+            <li>Pagamento #{{ pagamento.id }} - Valor: R$ {{ valor_total }}</li>
         {% empty %}
             <li>Nenhum pagamento registrado.</li>
         {% endfor %}
