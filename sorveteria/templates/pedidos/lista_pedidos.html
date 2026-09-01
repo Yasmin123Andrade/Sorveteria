@@ -8,7 +8,7 @@
     <h1>Pedidos Realizados</h1>
     <ul>
         {% for pedido in pedidos %}
-            <li>Pedido #{{ pedido.id }} - Cliente: {{ pedido.cliente }}</li>
+             <li>Pedido #{{ pedido.id }} - Cliente: {{ pedido.fk_pessoa.nome }} - Status: {{ pedido.status }}</li>
         {% empty %}
             <li>Nenhum pedido encontrado.</li>
         {% endfor %}
