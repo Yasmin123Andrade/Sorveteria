@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pedidos</title>
+</head>
+<body>
+    <h1>Pedidos Realizados</h1>
+    <ul>
+        {% for pedido in pedidos %}
+            <li>Pedido #{{ pedido.id }} - Cliente: {{ pedido.cliente }}</li>
+        {% empty %}
+            <li>Nenhum pedido encontrado.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

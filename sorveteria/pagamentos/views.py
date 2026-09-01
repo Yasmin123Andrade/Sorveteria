@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Pagamento
 from .forms import PagamentoForm
 
-def lista_pagamentos(request):
+def listar_pagamentos(request):
     pagamentos = Pagamento.objects.all()
     return render(request, 'pagamentos/lista_pagamentos.html', {'pagamentos': pagamentos})
 
@@ -12,6 +12,9 @@ def criar_pagamento(request):
         if form.is_valid():
             form.save()
             return redirect('lista_pagamentos')
+        else:
+           
+            print(form.errors) 
     else:
         form = PagamentoForm()
     return render(request, 'pagamentos/criar_pagamento.html', {'form': form})

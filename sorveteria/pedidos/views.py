@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Pedidos
 from .forms import PedidosForm
-
-def lista_pedidos(request):
+def listar_pedidos(request):
     pedidos = Pedidos.objects.all()
     return render(request, 'pedidos/lista_pedidos.html', {'pedidos': pedidos})
 

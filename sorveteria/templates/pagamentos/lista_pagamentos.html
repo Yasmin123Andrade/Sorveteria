@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pagamentos</title>
+</head>
+<body>
+    <h1>Pagamentos Registrados</h1>
+    <ul>
+        {% for pagamento in pagamentos %}
+            <li>Pagamento #{{ pagamento.id }} - Valor: R$ {{ pagamento.valor }}</li>
+        {% empty %}
+            <li>Nenhum pagamento registrado.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
