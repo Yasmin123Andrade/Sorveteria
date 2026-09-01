@@ -1,9 +1,5 @@
 from django.db import models
 
-
-
-
-
 class Pagamento(models.Model):
     pedido = models.ForeignKey('pedidos.Pedidos', on_delete=models.CASCADE, related_name='pagamentos')
     forma_pagamento = models.CharField(max_length=50)
