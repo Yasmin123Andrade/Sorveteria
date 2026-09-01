@@ -8,10 +8,13 @@
     <h1>Pagamentos Registrados</h1>
     <ul>
         {% for pagamento in pagamentos %}
-            <li>Pagamento #{{ pagamento.id }} - Valor: R$ {{ valor_total }}</li>
+            <li>Pagamento #{{ pagamento.id }} - Valor: R$ {{ pagamento.valor_total }} ({{ pagamento.forma_pagamento }})</li>
         {% empty %}
             <li>Nenhum pagamento registrado.</li>
         {% endfor %}
     </ul>
+    
+    <br>
+    <a href="{% url 'criar_pagamento' %}">Novo Pagamento</a>
 </body>
 </html>
