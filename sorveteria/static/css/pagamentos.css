@@ -1,0 +1,114 @@
+.pagamentos-page {
+    max-width: 1180px;
+}
+
+.pagamentos-heading {
+    margin: 18px auto 34px;
+    text-align: center;
+}
+
+.pagamentos-kicker {
+    color: #e12d53;
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.pagamentos-heading h1 {
+    color: #111;
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    line-height: 1.05;
+    margin: 4px 0 6px;
+}
+
+.pagamentos-heading p {
+    color: #777;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.pagamentos-toolbar {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.pagamentos-total {
+    color: #777;
+    font-size: .9rem;
+}
+
+.pagamentos-table-card {
+    background: #fff;
+    border: 1px solid #edf0f3;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(26, 32, 44, .08);
+    overflow: hidden;
+}
+
+.pagamentos-table-scroll {
+    overflow-x: auto;
+}
+
+.pagamentos-table {
+    min-width: 720px;
+}
+
+.pagamentos-table thead th {
+    background: #fff7f8;
+    border-bottom: 2px solid #f5d9df;
+    color: #333;
+    font-size: .76rem;
+    letter-spacing: .7px;
+    padding: 17px 20px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.pagamentos-table tbody td {
+    color: #666;
+    padding: 17px 20px;
+    vertical-align: middle;
+}
+
+.pagamentos-table tbody td:first-child {
+    color: #222;
+}
+
+.pagamentos-price {
+    color: #198754 !important;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+    .pagamentos-page {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .pagamentos-heading {
+        margin-bottom: 26px;
+    }
+
+    .pagamentos-heading h1 {
+        font-size: 3.8rem;
+    }
+
+    .pagamentos-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .pagamentos-toolbar .btn {
+        align-self: flex-start;
+    }
+
+    .pagamentos-table {
+        min-width: 640px;
+    }
+}

@@ -1,24 +1,50 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Produtos</title>
-</head>
-<body>
-    <h1>Produtos Cadastrados</h1>
-    <a href="{% url 'criar_produto' %}">Cadastrar Novo Produto</a>
-    <ul>
-        {% for produto in produtos %}
-            <li>{{ produto.descricao }} - R$ {{ produto.valor }}</li>
-        {% empty %}
-            <li>Nenhum produto cadastrado.</li>
-        {% endfor %}
-    </ul>
-    {% if request.user.is_authenticated %}
-    <form method="post" action="{% url 'logout' %}">
-    {% csrf_token %}
-    <button type="submit">Sair</button>
-</form>
-    {% endif %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Lista de Produtos - Sorveteria{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/produtos.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="container produtos-page py-5">
+    <header class="produtos-heading text-center">
+        <div class="produtos-heading-copy">
+            <span class="produtos-kicker">Cardápio da sorveteria</span>
+            <h1>Produtos</h1>
+            <p>Sabores e opções disponíveis</p>
+        </div>
+        <div class="produtos-heading-image">
+            <img src="{% static 'images/img-1.png' %}" alt="Sorvete da sorveteria">
+        </div>
+    </header>
+
+    <div class="produtos-toolbar">
+        <span class="produtos-total">{{ produtos|length }} produto{{ produtos|length|pluralize }}</span>
+        <a href="{% url 'criar_produto' %}" class="btn btn-success font-weight-bold shadow-sm">
+            <i class="fa fa-plus mr-1"></i>Cadastrar novo produto
+        </a>
+    </div>
+
+    <section class="produtos-table-card" aria-label="Produtos cadastrados">
+        <div class="table-responsive produtos-table-scroll">
+            <table class="table table-hover mb-0 produtos-table">
+                <thead>
+                    <tr><th scope="col">Descrição do produto</th><th scope="col" class="text-right">Valor</th></tr>
+                </thead>
+                <tbody>
+                    {% for produto in produtos %}
+                    <tr>
+                        <td data-label="Produto" class="font-weight-bold">{{ produto.descricao }}</td>
+                        <td data-label="Valor" class="text-right produtos-price">R$ {{ produto.valor }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="2" class="text-center text-muted py-5">Nenhum produto cadastrado.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+{% endblock %}

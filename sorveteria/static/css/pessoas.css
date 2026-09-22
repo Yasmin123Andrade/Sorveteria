@@ -1,0 +1,148 @@
+.clientes-page {
+    max-width: 1180px;
+}
+
+.clientes-heading {
+    margin: 18px auto 34px;
+}
+
+.clientes-home-section {
+    background: #fff7f8;
+    padding: 72px 0;
+}
+
+.pagamentos-home-section {
+    background: #fff;
+}
+
+.clientes-home-card {
+    background: #fff;
+    border: 1px solid #f5d9df;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(26, 32, 44, .08);
+    margin: 0 auto;
+    max-width: 760px;
+    padding: 42px 24px;
+    text-align: center;
+}
+
+.clientes-home-card h2 {
+    color: #111;
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.5rem;
+    line-height: 1.05;
+    margin: 4px 0 8px;
+}
+
+.clientes-home-card p {
+    color: #777;
+    margin: 0 auto 22px;
+}
+
+.clientes-kicker {
+    color: #e12d53;
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.clientes-heading h1 {
+    color: #111;
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    line-height: 1.05;
+    margin: 4px 0 6px;
+}
+
+.clientes-heading p {
+    color: #777;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.clientes-toolbar {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.clientes-total {
+    color: #777;
+    font-size: .9rem;
+}
+
+.clientes-table-card {
+    background: #fff;
+    border: 1px solid #edf0f3;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(26, 32, 44, .08);
+    overflow: hidden;
+}
+
+.clientes-table-scroll {
+    overflow-x: auto;
+}
+
+.clientes-table {
+    min-width: 720px;
+}
+
+.clientes-table thead th {
+    background: #fff7f8;
+    border-bottom: 2px solid #f5d9df;
+    color: #333;
+    font-size: .76rem;
+    letter-spacing: .7px;
+    padding: 17px 20px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.clientes-table tbody td {
+    color: #666;
+    padding: 17px 20px;
+    vertical-align: middle;
+}
+
+.clientes-table tbody td:first-child {
+    color: #222;
+}
+
+@media (max-width: 575.98px) {
+    .clientes-home-section {
+        padding: 48px 0;
+    }
+
+    .clientes-home-card h2 {
+        font-size: 3.8rem;
+    }
+
+    .clientes-page {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .clientes-heading {
+        margin-bottom: 26px;
+    }
+
+    .clientes-heading h1 {
+        font-size: 3.8rem;
+    }
+
+    .clientes-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .clientes-toolbar .btn {
+        align-self: flex-start;
+    }
+
+    .clientes-table {
+        min-width: 620px;
+    }
+}

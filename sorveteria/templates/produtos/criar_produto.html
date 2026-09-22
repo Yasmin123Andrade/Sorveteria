@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastrar Produto</title>
-</head>
-<body>
-    <h1>Novo Produto</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Salvar</button>
-    </form>
-    <br>
-    <a href="{% url 'lista_produtos' %}">Voltar para a lista</a>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cadastrar Produto - Sorveteria{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/forms.css' %}">{% endblock %}
+
+{% block content %}
+<main class="container my-5"><div class="row justify-content-center"><div class="col-lg-8"><section class="card-romyk-form"><header class="card-romyk-header"><h1 class="title-romyk">Novo Produto</h1><p class="subtitle-romyk">Cadastre um produto no catálogo</p></header><div class="card-body p-4 p-md-5"><form method="post" class="romyk-grid-form">{% csrf_token %}{{ form.as_p }}<div class="form-actions"><a href="{% url 'lista_produtos' %}" class="btn btn-outline-secondary">Cancelar</a><button type="submit" class="btn-romyk-submit"><i class="fa fa-save mr-2"></i>Salvar</button></div></form></div></section></div></div></main>
+{% endblock %}

@@ -1,0 +1,28 @@
+:root {
+    --romyk-primary: #e12d53;
+    --romyk-dark: #111111;
+    --romyk-text: #333333;
+    --romyk-muted: #777777;
+    --romyk-border: #e2e8f0;
+}
+
+.card-romyk-form { background: #fff; border: 1px solid var(--romyk-border); border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, .05); overflow: hidden; }
+.card-romyk-header { padding: 30px 30px 10px; text-align: center; }
+.title-romyk { color: var(--romyk-dark); display: inline-block; font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; }
+.title-romyk::after { background: var(--romyk-primary); border-radius: 2px; content: ''; display: block; height: 3px; margin: 6px auto 0; width: 50%; }
+.subtitle-romyk { color: var(--romyk-muted); font-size: .9rem; margin-bottom: 0; }
+.romyk-grid-form { display: grid; gap: 15px 20px; grid-template-columns: repeat(12, 1fr); }
+.romyk-grid-form p { display: flex; flex-direction: column; grid-column: span 12; margin-bottom: 0; }
+.romyk-grid-form label { color: var(--romyk-dark); font-size: .85rem; font-weight: 600; margin-bottom: 4px; }
+.romyk-grid-form input, .romyk-grid-form select, .romyk-grid-form textarea { background: #fafafa; border: 1px solid var(--romyk-border); border-radius: 8px; box-sizing: border-box; color: var(--romyk-text); padding: 9px 14px; width: 100%; }
+.romyk-grid-form input:focus, .romyk-grid-form select:focus, .romyk-grid-form textarea:focus { background: #fff; border-color: var(--romyk-primary); box-shadow: 0 0 0 3px rgba(225, 45, 83, .12); outline: none; }
+.romyk-grid-form .errorlist { color: #dc3545; font-size: .85rem; list-style: none; margin: 4px 0; padding: 0; }
+.form-actions { align-items: center; display: flex; gap: 12px; grid-column: 1 / -1; justify-content: center; margin-top: 12px; }
+.btn-romyk-submit { background: var(--romyk-primary); border: 2px solid var(--romyk-primary); border-radius: 25px; color: #fff; cursor: pointer; font-weight: 700; padding: 10px 30px; transition: all .3s ease; }
+.btn-romyk-submit:hover { background: transparent; color: var(--romyk-primary); }
+
+@media (min-width: 768px) {
+    .romyk-grid-form p:has(input[name*="nome"]), .romyk-grid-form p:has(input[name*="rua"]), .romyk-grid-form p:has(input[name*="cidade"]) { grid-column: span 8; }
+    .romyk-grid-form p:has(input[name*="cpf"]), .romyk-grid-form p:has(input[name*="numero"]), .romyk-grid-form p:has(input[name*="estado"]) { grid-column: span 4; }
+    .romyk-grid-form p:has(input[name*="telefone"]), .romyk-grid-form p:has(input[name*="bairro"]), .romyk-grid-form p:has(input[name*="cep"]) { grid-column: span 6; }
+}

@@ -1,23 +1,47 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Pessoas</title>
-</head>
-<body>
-    <h1>Pessoas Cadastradas</h1>
-    <a href="{% url 'criar_pessoa' %}">Cadastrar Nova Pessoa</a>
-    <ul>
-        {% for pessoa in pessoas %}
-             <li>
-                <strong>Nome:</strong> {{ pessoa.nome }} |
-                <strong>CPF:</strong> {{ pessoa.cpf }} |
-                <strong>Telefone:</strong> {{ pessoa.telefone }} |
-                <strong>Endereço:</strong> {{ pessoa.rua }}, {{ pessoa.numero }}, {{ pessoa.bairro }} - {{ pessoa.cidade }}/{{ pessoa.estado }}
-            </li>
-            {% empty %}
-            <li>Nenhuma pessoa cadastrada.</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pessoas - Sorveteria{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pessoas.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="container clientes-page py-5">
+	<header class="clientes-heading text-center">
+		<span class="clientes-kicker">Cadastro da sorveteria</span>
+		<h1>Clientes</h1>
+		<p>Pessoas cadastradas no sistema</p>
+	</header>
+
+	<div class="clientes-toolbar">
+		<span class="clientes-total">{{ pessoas|length }} cliente{{ pessoas|length|pluralize }}</span>
+		<a href="{% url 'criar_pessoa' %}" class="btn btn-success font-weight-bold shadow-sm">
+			<i class="fa fa-plus mr-1"></i>Cadastrar nova pessoa
+		</a>
+	</div>
+
+	<section class="clientes-table-card" aria-label="Pessoas cadastradas">
+		<div class="table-responsive clientes-table-scroll">
+			<table class="table table-hover mb-0 clientes-table">
+				<thead>
+					<tr><th scope="col">Nome</th><th scope="col">CPF</th><th scope="col">Telefone</th><th scope="col">Endereço</th></tr>
+				</thead>
+				<tbody>
+					{% for pessoa in pessoas %}
+					<tr>
+						<td data-label="Nome" class="font-weight-bold">{{ pessoa.nome }}</td>
+						<td data-label="CPF">{{ pessoa.cpf }}</td>
+						<td data-label="Telefone">{{ pessoa.telefone }}</td>
+						<td data-label="Endereço">{{ pessoa.rua }}, {{ pessoa.numero }}, {{ pessoa.bairro }} - {{ pessoa.cidade }}/{{ pessoa.estado }}</td>
+					</tr>
+					{% empty %}
+					<tr><td colspan="4" class="text-center text-muted py-5">Nenhuma pessoa cadastrada.</td></tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+</main>
+{% endblock %}

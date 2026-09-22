@@ -1,0 +1,137 @@
+.produtos-page {
+    max-width: 1180px;
+}
+
+.produtos-heading {
+    display: block;
+    margin: 18px auto 34px;
+    text-align: center;
+}
+
+.produtos-heading-copy {
+    display: block;
+}
+
+.produtos-kicker {
+    color: #e12d53;
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.produtos-heading h1 {
+    color: #111;
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    line-height: 1.05;
+    margin: 4px 0 6px;
+}
+
+.produtos-heading p {
+    color: #777;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.produtos-heading-image {
+    margin: 0 auto 8px;
+    width: 140px;
+}
+
+.produtos-heading-image img {
+    display: block;
+    float: none !important;
+    max-height: 180px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.produtos-toolbar {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.produtos-total {
+    color: #777;
+    font-size: .9rem;
+}
+
+.produtos-table-card {
+    background: #fff;
+    border: 1px solid #edf0f3;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(26, 32, 44, .08);
+    overflow: hidden;
+}
+
+.produtos-table-scroll {
+    overflow-x: auto;
+}
+
+.produtos-table {
+    min-width: 560px;
+}
+
+.produtos-table thead th {
+    background: #fff7f8;
+    border-bottom: 2px solid #f5d9df;
+    color: #333;
+    font-size: .76rem;
+    letter-spacing: .7px;
+    padding: 17px 20px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.produtos-table tbody td {
+    color: #666;
+    padding: 17px 20px;
+    vertical-align: middle;
+}
+
+.produtos-table tbody td:first-child {
+    color: #222;
+}
+
+.produtos-price {
+    color: #198754 !important;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+    .produtos-page {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .produtos-heading {
+        margin-bottom: 26px;
+    }
+
+    .produtos-heading h1 {
+        font-size: 3.8rem;
+    }
+
+    .produtos-heading-image {
+        margin: 0 auto 8px;
+        width: 110px;
+    }
+
+    .produtos-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .produtos-toolbar .btn {
+        align-self: flex-start;
+    }
+
+    .produtos-table {
+        min-width: 480px;
+    }
+}

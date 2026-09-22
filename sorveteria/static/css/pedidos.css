@@ -1,0 +1,123 @@
+.pedidos-page {
+    max-width: 1180px;
+}
+
+.pedidos-heading {
+    display: block;
+    margin: 18px auto 34px;
+    text-align: center;
+}
+
+.pedidos-heading-copy {
+    display: block;
+}
+
+.pedidos-kicker {
+    color: #e12d53;
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.pedidos-heading h1 {
+    color: #111;
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    line-height: 1.05;
+    margin: 4px 0 6px;
+}
+
+.pedidos-heading p {
+    color: #777;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.pedidos-toolbar {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.pedidos-total {
+    color: #777;
+    font-size: .9rem;
+}
+
+.pedidos-table-card {
+    background: #fff;
+    border: 1px solid #edf0f3;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(26, 32, 44, .08);
+    overflow: hidden;
+}
+
+.pedidos-table-scroll {
+    overflow-x: auto;
+}
+
+.pedidos-table {
+    min-width: 680px;
+}
+
+.pedidos-table thead th {
+    background: #fff7f8;
+    border-bottom: 2px solid #f5d9df;
+    color: #333;
+    font-size: .76rem;
+    letter-spacing: .7px;
+    padding: 17px 20px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.pedidos-table tbody td {
+    color: #666;
+    padding: 17px 20px;
+    vertical-align: middle;
+}
+
+.pedidos-table tbody td:first-child {
+    color: #222;
+}
+
+.pedido-status {
+    background: #fff0f3;
+    border-radius: 20px;
+    color: #c82346;
+    display: inline-block;
+    font-size: .82rem;
+    font-weight: 700;
+    padding: 5px 12px;
+}
+
+@media (max-width: 575.98px) {
+    .pedidos-page {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .pedidos-heading {
+        margin-bottom: 26px;
+    }
+
+    .pedidos-heading h1 {
+        font-size: 3.8rem;
+    }
+
+    .pedidos-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .pedidos-toolbar .btn {
+        align-self: flex-start;
+    }
+
+    .pedidos-table {
+        min-width: 600px;
+    }
+}
