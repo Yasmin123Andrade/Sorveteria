@@ -23,6 +23,24 @@ def detalhe_produto(request, pk):
 
 
 @login_required
+def editar_produto(request, pk):
+    produto = get_object_or_404(Produto, pk=pk)
+
+    if request.method == 'POST':
+        form = ProdutoForm(request.POST, instance=produto)
+        if form.is_valid():
+            form.save()
+            return redirect('detalhe_produto', pk=produto.pk)
+    else:
+        form = ProdutoForm(instance=produto)
+
+    return render(request, 'produtos/editar_produto.html', {
+        'form': form,
+        'produto': produto
+    })
+
+
+@login_required
 def criar_produto(request):
     if request.method == 'POST':
         form = ProdutoForm(request.POST)

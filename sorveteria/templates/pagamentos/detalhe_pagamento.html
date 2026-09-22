@@ -1,20 +1,15 @@
 ```html
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
+{% block title %}Detalhes do Pagamento | Sorveteria{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Detalhes do Pagamento | Sorveteria</title>
-
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-</head>
+{% endblock %}
 
-<body class="login-page">
-
+{% block content %}
+<div class="container py-5">
     <main class="login-card">
 
         <div class="login-heading">
@@ -32,6 +27,9 @@
         </div>
 
         <div class="login-form">
+
+            <label>ID</label>
+            <input type="text" value="{{ pagamento.pk }}" readonly>
 
             <label>Pedido</label>
             <input type="text"
@@ -69,8 +67,6 @@
         </div>
 
     </main>
-
-</body>
-
-</html>
+</div>
+{% endblock %}
 ```

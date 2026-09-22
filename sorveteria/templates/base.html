@@ -19,7 +19,7 @@
 
     {% block extra_css %}{% endblock %}
 </head>
-<body>
+<body class="site-body">
     <div class="header_section {% block header_class %}header_bg{% endblock %}">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -86,11 +86,11 @@
     {% block content %}
     {% endblock %}
 
-    <div class="copyright_section">
+    <footer class="copyright_section">
         <div class="container">
             <p class="copyright_text">© {% now "Y" %} Todos os direitos reservados.</p>
         </div>
-    </div>
+    </footer>
 
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>

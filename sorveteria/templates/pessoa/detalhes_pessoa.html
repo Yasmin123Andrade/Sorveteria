@@ -1,20 +1,15 @@
 ```html
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
+{% block title %}Detalhes da Pessoa | Sorveteria{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Detalhes da Pessoa | Sorveteria</title>
-
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-</head>
+{% endblock %}
 
-<body class="login-page">
-
+{% block content %}
+<div class="container py-5">
     <main class="login-card">
 
         <div class="login-heading">
@@ -33,17 +28,56 @@
 
         <div class="login-form">
 
+            <label>ID</label>
+            <input type="text" value="{{ pessoa.pk }}" readonly>
+
+            <label>Usuário</label>
+            <input type="text" value="{{ pessoa.username }}" readonly>
+
+            <label>Email</label>
+            <input type="text" value="{{ pessoa.email }}" readonly>
+
+            <label>Nome de usuário</label>
+            <input type="text" value="{{ pessoa.first_name }}" readonly>
+
+            <label>Sobrenome de usuário</label>
+            <input type="text" value="{{ pessoa.last_name }}" readonly>
+
             <label>Nome</label>
             <input type="text" value="{{ pessoa.nome }}" readonly>
 
             <label>CPF</label>
             <input type="text" value="{{ pessoa.cpf }}" readonly>
 
-            <label>Email</label>
-            <input type="text" value="{{ pessoa.email }}" readonly>
-
             <label>Telefone</label>
             <input type="text" value="{{ pessoa.telefone }}" readonly>
+
+            <label>Rua</label>
+            <input type="text" value="{{ pessoa.rua }}" readonly>
+
+            <label>Bairro</label>
+            <input type="text" value="{{ pessoa.bairro }}" readonly>
+
+            <label>Número</label>
+            <input type="text" value="{{ pessoa.numero }}" readonly>
+
+            <label>CEP</label>
+            <input type="text" value="{{ pessoa.cep }}" readonly>
+
+            <label>Cidade</label>
+            <input type="text" value="{{ pessoa.cidade }}" readonly>
+
+            <label>Estado</label>
+            <input type="text" value="{{ pessoa.estado }}" readonly>
+
+            <label>Ativo</label>
+            <input type="text" value="{{ pessoa.is_active }}" readonly>
+
+            <label>Data de cadastro</label>
+            <input type="text" value="{{ pessoa.date_joined }}" readonly>
+
+            <label>Último acesso</label>
+            <input type="text" value="{{ pessoa.last_login|default:'Nunca acessou' }}" readonly>
 
             <a href="{% url 'editar_pessoa' pessoa.pk %}"
                style="text-decoration: none;">
@@ -58,8 +92,6 @@
         </div>
 
     </main>
-
-</body>
-
-</html>
+</div>
+{% endblock %}
 ```

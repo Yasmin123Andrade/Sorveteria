@@ -39,3 +39,21 @@ def detalhe_pedido(request, pk):
     return render(request, 'pedidos/detalhe_pedido.html', {
         'pedido': pedido
     })
+
+
+@login_required
+def editar_pedido(request, pk):
+    pedido = get_object_or_404(Pedidos, pk=pk)
+
+    if request.method == 'POST':
+        form = PedidosForm(request.POST, instance=pedido)
+        if form.is_valid():
+            form.save()
+            return redirect('detalhe_pedido', pk=pedido.pk)
+    else:
+        form = PedidosForm(instance=pedido)
+
+    return render(request, 'pedidos/editar_pedido.html', {
+        'form': form,
+        'pedido': pedido
+    })

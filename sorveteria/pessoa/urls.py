@@ -20,6 +20,12 @@ urlpatterns = [
     ),
 
     path(
+        '<int:pk>/editar/',
+        views.editar_pessoa,
+        name='editar_pessoa'
+    ),
+
+    path(
         '<int:pk>/',
         views.detalhe_pessoa,
         name='detalhe_pessoa'

@@ -1,19 +1,14 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
+{% block title %}Editar Pagamento | Sorveteria{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Editar Pagamento | Sorveteria</title>
-
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-</head>
+{% endblock %}
 
-<body class="login-page">
-
+{% block content %}
+<div class="container py-5">
     <main class="login-card">
 
         <div class="login-heading">
@@ -76,7 +71,5 @@
         </form>
 
     </main>
-
-</body>
-
-</html>
+</div>
+{% endblock %}

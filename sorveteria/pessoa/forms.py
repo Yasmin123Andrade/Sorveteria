@@ -104,3 +104,63 @@ class PessoaForm(forms.ModelForm):
             pessoa.save()
 
         return pessoa
+
+
+class PessoaEditForm(forms.ModelForm):
+    password = forms.CharField(
+        required=False,
+        label="Nova senha",
+        widget=forms.PasswordInput
+    )
+
+    password_confirm = forms.CharField(
+        required=False,
+        label="Confirmar nova senha",
+        widget=forms.PasswordInput
+    )
+
+    class Meta:
+        model = Pessoa
+        fields = [
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'cpf',
+            'nome',
+            'telefone',
+            'rua',
+            'bairro',
+            'numero',
+            'cep',
+            'cidade',
+            'estado'
+        ]
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if User.objects.filter(username=username).exclude(pk=self.instance.pk).exists():
+            raise forms.ValidationError(
+                "Este nome de usuário já está em uso. Escolha outro."
+            )
+        return username
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get('password')
+        password_confirm = cleaned_data.get('password_confirm')
+        if password != password_confirm:
+            self.add_error(
+                'password_confirm',
+                'As senhas não coincidem.'
+            )
+        return cleaned_data
+
+    def save(self, commit=True):
+        pessoa = super().save(commit=False)
+        password = self.cleaned_data.get('password')
+        if password:
+            pessoa.set_password(password)
+        if commit:
+            pessoa.save()
+        return pessoa

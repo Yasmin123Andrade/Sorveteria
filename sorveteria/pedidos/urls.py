@@ -10,6 +10,8 @@ urlpatterns = [
 
     path('novo/', views.criar_pedido, name='criar_pedido'),
 
+    path('<int:pk>/editar/', views.editar_pedido, name='editar_pedido'),
+
     path('<int:pk>/', views.detalhe_pedido, name='detalhe_pedido'),
 
     path('accounts/', include('django.contrib.auth.urls')),

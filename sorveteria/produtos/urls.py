@@ -6,6 +6,8 @@ urlpatterns = [
 
     path('novo/', views.criar_produto, name='criar_produto'),
 
+    path('<int:pk>/editar/', views.editar_produto, name='editar_produto'),
+
     path('<int:pk>/', views.detalhe_produto, name='detalhe_produto'),
 
     path('accounts/', include('django.contrib.auth.urls')),

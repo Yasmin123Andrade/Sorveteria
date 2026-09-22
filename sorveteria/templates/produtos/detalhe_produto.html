@@ -1,20 +1,15 @@
 ```html
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
+{% block title %}Detalhes do Produto | Sorveteria{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Detalhes do Produto | Sorveteria</title>
-
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-</head>
+{% endblock %}
 
-<body class="login-page">
-
+{% block content %}
+<div class="container py-5">
     <main class="login-card">
 
         <div class="login-heading">
@@ -33,14 +28,14 @@
 
         <div class="login-form">
 
-            <label>Nome</label>
-            <input type="text" value="{{ produto.nome }}" readonly>
+            <label>ID</label>
+            <input type="text" value="{{ produto.pk }}" readonly>
 
             <label>Descrição</label>
             <input type="text" value="{{ produto.descricao }}" readonly>
 
             <label>Preço</label>
-            <input type="text" value="R$ {{ produto.preco }}" readonly>
+            <input type="text" value="R$ {{ produto.valor }}" readonly>
 
             <a href="{% url 'editar_produto' produto.pk %}"
                style="text-decoration: none;">
@@ -55,8 +50,6 @@
         </div>
 
     </main>
-
-</body>
-
-</html>
+</div>
+{% endblock %}
 ```

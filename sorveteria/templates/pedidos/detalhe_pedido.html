@@ -1,20 +1,15 @@
 ```html
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
+{% block title %}Detalhes do Pedido | Sorveteria{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Detalhes do Pedido | Sorveteria</title>
-
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-</head>
+{% endblock %}
 
-<body class="login-page">
-
+{% block content %}
+<div class="container py-5">
     <main class="login-card">
 
         <div class="login-heading">
@@ -33,9 +28,38 @@
 
         <div class="login-form">
 
-            <label>Cliente</label>
-            <input type="text" value="{{ pedido.pessoa }}" readonly>
+            <label>ID</label>
+            <input type="text" value="{{ pedido.pk }}" readonly>
 
-            <label>Produto</label>
-            <input type="text"
+            <label>Cliente</label>
+            <input type="text" value="{{ pedido.fk_pessoa }}" readonly>
+
+            <label>Status</label>
+            <input type="text" value="{{ pedido.status }}" readonly>
+
+            <label>Data do pedido</label>
+            <input type="text" value="{{ pedido.data_pedido }}" readonly>
+
+            <label>Itens do pedido</label>
+            {% for item in pedido.itens_pedido.all %}
+                <input type="text" value="{{ item.fk_produto }} | Quantidade: {{ item.quantidade }} | Total: R$ {{ item.preco_total }}" readonly>
+            {% empty %}
+                <input type="text" value="Nenhum item cadastrado" readonly>
+            {% endfor %}
+
+            <a href="{% url 'editar_pedido' pedido.pk %}"
+               style="text-decoration: none;">
+                <button type="button">Editar</button>
+            </a>
+
+            <a href="{% url 'lista_pedidos' %}"
+               style="text-decoration: none;">
+                <button type="button">Voltar</button>
+            </a>
+
+        </div>
+
+    </main>
+</div>
+{% endblock %}
 ```
