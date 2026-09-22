@@ -36,7 +36,11 @@
                 <tbody>
                     {% for produto in produtos %}
                     <tr>
-                        <td data-label="Produto" class="font-weight-bold">{{ produto.descricao }}</td>
+                   <td data-label="Produto" class="font-weight-bold">
+    <a href="{% url 'detalhe_produto' produto.pk %}">
+        {{ produto.descricao }}
+    </a>
+</td>
                         <td data-label="Valor" class="text-right produtos-price">R$ {{ produto.valor }}</td>
                     </tr>
                     {% empty %}
