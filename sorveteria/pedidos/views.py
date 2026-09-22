@@ -1,22 +1,41 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Pedidos
 from .forms import PedidosForm
 from django.contrib.auth.decorators import login_required
 
+
 def home(request):
     return render(request, 'home.html')
+
 
 @login_required
 def listar_pedidos(request):
     pedidos = Pedidos.objects.all()
-    return render(request, 'pedidos/lista_pedidos.html', {'pedidos': pedidos})
+    return render(request, 'pedidos/lista_pedidos.html', {
+        'pedidos': pedidos
+    })
+
+
 @login_required
 def criar_pedido(request):
     if request.method == 'POST':
         form = PedidosForm(request.POST)
+
         if form.is_valid():
             form.save()
             return redirect('lista_pedidos')
+
     else:
         form = PedidosForm()
-    return render(request, 'pedidos/criar_pedido.html', {'form': form})
+
+    return render(request, 'pedidos/criar_pedido.html', {
+        'form': form
+    })
+
+
+def detalhe_pedido(request, pk):
+    pedido = get_object_or_404(Pedidos, pk=pk)
+
+    return render(request, 'pedidos/detalhe_pedido.html', {
+        'pedido': pedido
+    })

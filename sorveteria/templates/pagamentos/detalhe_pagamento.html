@@ -1,0 +1,76 @@
+```html
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detalhes do Pagamento | Sorveteria</title>
+
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body class="login-page">
+
+    <main class="login-card">
+
+        <div class="login-heading">
+
+            <span class="login-mark">S</span>
+
+            <p class="eyebrow">SORVETERIA GELATO</p>
+
+            <h1>Detalhes do Pagamento</h1>
+
+            <p class="subtitle">
+                Confira as informações do pagamento.
+            </p>
+
+        </div>
+
+        <div class="login-form">
+
+            <label>Pedido</label>
+            <input type="text"
+                   value="{{ pagamento.pedido }}"
+                   readonly>
+
+            <label>Forma de pagamento</label>
+            <input type="text"
+                   value="{{ pagamento.forma_pagamento }}"
+                   readonly>
+
+            <label>Valor total</label>
+            <input type="text"
+                   value="R$ {{ pagamento.valor_total }}"
+                   readonly>
+
+            <a href="{% url 'editar_pagamento' pagamento.pk %}"
+               style="text-decoration: none;">
+
+                <button type="button">
+                    Editar
+                </button>
+
+            </a>
+
+            <a href="{% url 'lista_pagamentos' %}"
+               style="text-decoration: none;">
+
+                <button type="button">
+                    Voltar
+                </button>
+
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
+```

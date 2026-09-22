@@ -1,9 +1,89 @@
-{% extends 'base.html' %}
 {% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% block title %}Cadastrar Pessoa - Sorveteria{% endblock %}
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/forms.css' %}">{% endblock %}
+    <title>Cadastrar | Sorveteria</title>
 
-{% block content %}
-<main class="container my-5"><div class="row justify-content-center"><div class="col-lg-10 col-xl-9"><section class="card-romyk-form"><header class="card-romyk-header"><h1 class="title-romyk">Cadastrar Nova Pessoa</h1><p class="subtitle-romyk">Preencha os dados abaixo para concluir o registro</p></header><div class="card-body p-4 p-md-5"><form method="post" novalidate>{% csrf_token %}<div class="romyk-grid-form">{{ form.as_p }}</div><div class="form-actions"><a href="{% url 'lista_pessoas' %}" class="btn btn-outline-secondary">Cancelar</a><button type="submit" class="btn-romyk-submit"><i class="fa fa-save mr-2"></i>Salvar Registro</button></div></form></div></section></div></div></main>
-{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body class="login-page">
+
+    <main class="login-card register-card">
+
+        <div class="login-heading">
+
+            <span class="login-mark">S</span>
+
+            <p class="eyebrow">
+                SORVETERIA GELATO
+            </p>
+
+            <h1>
+                Criar conta
+            </h1>
+
+            <p class="subtitle">
+                Cadastre seus dados para começar a fazer pedidos.
+            </p>
+
+        </div>
+
+
+        <form method="post" class="login-form">
+
+            {% csrf_token %}
+
+
+            {% if form.non_field_errors %}
+                <div class="error">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+
+            {% for field in form %}
+
+                <div class="register-field">
+
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.errors %}
+                        <div class="error">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+
+
+            <button type="submit">
+                Cadastrar
+            </button>
+
+
+            <p class="register-link">
+
+                Já possui uma conta?
+
+                <a href="{% url 'login' %}">
+                    Entrar
+                </a>
+
+            </p>
+
+        </form>
+
+    </main>
+
+</body>
+</html>

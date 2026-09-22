@@ -1,0 +1,78 @@
+```html
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Editar Pedido | Sorveteria</title>
+
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body class="login-page">
+
+    <main class="login-card">
+
+        <div class="login-heading">
+
+            <span class="login-mark">S</span>
+
+            <p class="eyebrow">SORVETERIA GELATO</p>
+
+            <h1>Editar Pedido</h1>
+
+            <p class="subtitle">
+                Altere as informações do pedido.
+            </p>
+
+        </div>
+
+        <form method="post" class="login-form">
+
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+
+            {% for field in form %}
+
+                <label for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                </label>
+
+                {{ field }}
+
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <p class="error">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+
+            {% endfor %}
+
+            <button type="submit">
+                Salvar alterações
+            </button>
+
+            <a href="{% url 'detalhe_pedido' pedido.pk %}"
+               style="text-decoration: none;">
+                <button type="button">
+                    Cancelar
+                </button>
+            </a>
+
+        </form>
+
+    </main>
+
+</body>
+
+</html>
+```

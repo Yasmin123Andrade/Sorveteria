@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Detalhes do Produto | Sorveteria</title>
+    <title>Detalhes da Pessoa | Sorveteria</title>
 
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
@@ -23,10 +23,10 @@
 
             <p class="eyebrow">SORVETERIA GELATO</p>
 
-            <h1>Detalhes do Produto</h1>
+            <h1>Detalhes da Pessoa</h1>
 
             <p class="subtitle">
-                Confira as informações do produto.
+                Confira as informações cadastradas.
             </p>
 
         </div>
@@ -34,20 +34,23 @@
         <div class="login-form">
 
             <label>Nome</label>
-            <input type="text" value="{{ produto.nome }}" readonly>
+            <input type="text" value="{{ pessoa.nome }}" readonly>
 
-            <label>Descrição</label>
-            <input type="text" value="{{ produto.descricao }}" readonly>
+            <label>CPF</label>
+            <input type="text" value="{{ pessoa.cpf }}" readonly>
 
-            <label>Preço</label>
-            <input type="text" value="R$ {{ produto.preco }}" readonly>
+            <label>Email</label>
+            <input type="text" value="{{ pessoa.email }}" readonly>
 
-            <a href="{% url 'editar_produto' produto.pk %}"
+            <label>Telefone</label>
+            <input type="text" value="{{ pessoa.telefone }}" readonly>
+
+            <a href="{% url 'editar_pessoa' pessoa.pk %}"
                style="text-decoration: none;">
                 <button type="button">Editar</button>
             </a>
 
-            <a href="{% url 'lista_produtos' %}"
+            <a href="{% url 'lista_pessoas' %}"
                style="text-decoration: none;">
                 <button type="button">Voltar</button>
             </a>

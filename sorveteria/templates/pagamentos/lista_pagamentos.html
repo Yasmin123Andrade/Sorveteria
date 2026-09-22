@@ -9,37 +9,85 @@
 
 {% block content %}
 <main class="container pagamentos-page py-5">
-	<header class="pagamentos-heading">
-		<span class="pagamentos-kicker">Controle financeiro</span>
-		<h1>Pagamentos</h1>
-		<p>Registros de pagamentos realizados</p>
-	</header>
 
-	<div class="pagamentos-toolbar">
-		<span class="pagamentos-total">{{ pagamentos|length }} pagamento{{ pagamentos|length|pluralize }}</span>
-		<a href="{% url 'criar_pagamento' %}" class="btn btn-success font-weight-bold shadow-sm"><i class="fa fa-plus mr-1"></i>Novo pagamento</a>
-	</div>
+    <header class="pagamentos-heading">
+        <span class="pagamentos-kicker">Controle financeiro</span>
+        <h1>Pagamentos</h1>
+        <p>Registros de pagamentos realizados</p>
+    </header>
 
-	<section class="pagamentos-table-card" aria-label="Pagamentos registrados">
-		<div class="table-responsive pagamentos-table-scroll">
-			<table class="table table-hover mb-0 pagamentos-table">
-				<thead>
-					<tr><th scope="col">Pagamento</th><th scope="col">Pedido</th><th scope="col">Forma de pagamento</th><th scope="col" class="text-right">Valor</th></tr>
-				</thead>
-				<tbody>
-					{% for pagamento in pagamentos %}
-					<tr>
-						<td data-label="Pagamento" class="font-weight-bold">#{{ pagamento.id }}</td>
-						<td data-label="Pedido">#{{ pagamento.pedido.id }}</td>
-						<td data-label="Forma de pagamento">{{ pagamento.forma_pagamento }}</td>
-						<td data-label="Valor" class="text-right pagamentos-price">R$ {{ pagamento.valor_total }}</td>
-					</tr>
-					{% empty %}
-					<tr><td colspan="4" class="text-center text-muted py-5">Nenhum pagamento registrado.</td></tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
-	</section>
+    <div class="pagamentos-toolbar">
+        <span class="pagamentos-total">
+            {{ pagamentos|length }} pagamento{{ pagamentos|length|pluralize }}
+        </span>
+
+        <a href="{% url 'criar_pagamento' %}" class="btn btn-success font-weight-bold shadow-sm">
+            <i class="fa fa-plus mr-1"></i>Novo pagamento
+        </a>
+    </div>
+
+    <section class="pagamentos-table-card" aria-label="Pagamentos registrados">
+
+        <div class="table-responsive pagamentos-table-scroll">
+
+            <table class="table table-hover mb-0 pagamentos-table">
+
+                <thead>
+                    <tr>
+                        <th scope="col">Pagamento</th>
+                        <th scope="col">Pedido</th>
+                        <th scope="col">Forma de pagamento</th>
+                        <th scope="col" class="text-right">Valor</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for pagamento in pagamentos %}
+
+                    <tr>
+                        <td data-label="Pagamento" class="font-weight-bold">
+                            #{{ pagamento.id }}
+                        </td>
+
+                        <td data-label="Pedido">
+                            #{{ pagamento.pedido.id }}
+                        </td>
+
+                        <td data-label="Forma de pagamento">
+                            {{ pagamento.forma_pagamento }}
+                        </td>
+
+                        <td data-label="Valor" class="text-right pagamentos-price">
+                            R$ {{ pagamento.valor_total }}
+                        </td>
+
+                        <td data-label="Ações">
+                            <a href="{% url 'detalhe_pagamento' pagamento.pk %}"
+                               class="btn btn-primary btn-sm">
+                                Detalhes
+                            </a>
+                        </td>
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-5">
+                            Nenhum pagamento registrado.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
 </main>
 {% endblock %}
