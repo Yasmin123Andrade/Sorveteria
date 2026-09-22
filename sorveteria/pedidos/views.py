@@ -1,10 +1,16 @@
 from django.shortcuts import render, redirect
 from .models import Pedidos
 from .forms import PedidosForm
+from django.contrib.auth.decorators import login_required
+
+def home(request):
+    return render(request, 'home.html')
+
+@login_required
 def listar_pedidos(request):
     pedidos = Pedidos.objects.all()
     return render(request, 'pedidos/lista_pedidos.html', {'pedidos': pedidos})
-
+@login_required
 def criar_pedido(request):
     if request.method == 'POST':
         form = PedidosForm(request.POST)

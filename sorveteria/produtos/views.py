@@ -1,11 +1,16 @@
 from django.shortcuts import render, redirect
 from .models import Produto
 from .forms import ProdutoForm
+from django.contrib.auth.decorators import login_required
 
+
+def home(request):
+    return render(request, 'home.html')
+@login_required
 def lista_produtos(request):
     produtos = Produto.objects.all()
     return render(request, 'produtos/lista_produtos.html', {'produtos': produtos})
-
+@login_required
 def criar_produto(request):
     if request.method == 'POST':
         form = ProdutoForm(request.POST)

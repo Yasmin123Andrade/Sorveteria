@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Pessoa
 from .forms import PessoaForm
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def lista_pessoas(request):
     pessoas = Pessoa.objects.all()
     return render(request, 'pessoa/lista_pessoas.html', {'pessoas': pessoas})

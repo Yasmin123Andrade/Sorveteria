@@ -1,0 +1,126 @@
+:root {
+	--pink: #d94f83;
+	--pink-dark: #a93465;
+	--pink-soft: #fff0f5;
+	--ink: #442b36;
+	--muted: #8d737d;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body.login-page {
+	min-height: 100vh;
+	margin: 0;
+	display: grid;
+	place-items: center;
+	padding: 24px;
+	color: var(--ink);
+	font-family: Georgia, 'Times New Roman', serif;
+	background: linear-gradient(135deg, #fff8fa 0%, #fbd8e5 100%);
+}
+
+.login-card {
+	width: min(100%, 430px);
+	padding: clamp(28px, 7vw, 52px);
+	border: 1px solid rgba(217, 79, 131, 0.18);
+	border-radius: 24px;
+	background: rgba(255, 255, 255, 0.92);
+	box-shadow: 0 20px 55px rgba(169, 52, 101, 0.18);
+}
+
+.login-heading {
+	text-align: center;
+}
+
+.login-mark {
+	display: grid;
+	width: 58px;
+	height: 58px;
+	margin: 0 auto 16px;
+	place-items: center;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 2rem;
+	font-weight: bold;
+	background: var(--pink);
+}
+
+.eyebrow {
+	margin: 0 0 8px;
+	color: var(--pink-dark);
+	font-family: Arial, sans-serif;
+	font-size: 0.75rem;
+	font-weight: bold;
+	letter-spacing: 0.18em;
+}
+
+h1 {
+	margin: 0;
+	font-size: clamp(1.65rem, 6vw, 2.15rem);
+}
+
+.subtitle {
+	margin: 10px 0 28px;
+	color: var(--muted);
+	font-family: Arial, sans-serif;
+	font-size: 0.95rem;
+}
+
+.login-form p {
+	margin: 0 0 18px;
+	font-family: Arial, sans-serif;
+}
+
+.login-form label {
+	display: block;
+	margin-bottom: 7px;
+	color: var(--ink);
+	font-size: 0.9rem;
+	font-weight: bold;
+}
+
+.login-form input {
+	width: 100%;
+	padding: 12px 14px;
+	border: 1px solid #ebc4d1;
+	border-radius: 9px;
+	color: var(--ink);
+	font: inherit;
+	background: #fffafd;
+}
+
+.login-form input:focus {
+	outline: 3px solid rgba(217, 79, 131, 0.18);
+	border-color: var(--pink);
+}
+
+.login-form button {
+	width: 100%;
+	margin-top: 4px;
+	padding: 13px;
+	border: 0;
+	border-radius: 9px;
+	color: #fff;
+	font-family: Arial, sans-serif;
+	font-size: 1rem;
+	font-weight: bold;
+	background: var(--pink);
+	cursor: pointer;
+}
+
+.login-form button:hover {
+	background: var(--pink-dark);
+}
+
+@media (max-width: 420px) {
+	body.login-page {
+		padding: 16px;
+	}
+
+	.login-card {
+		padding: 30px 22px;
+		border-radius: 18px;
+	}
+}

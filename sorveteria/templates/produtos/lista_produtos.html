@@ -14,5 +14,11 @@
             <li>Nenhum produto cadastrado.</li>
         {% endfor %}
     </ul>
+    {% if request.user.is_authenticated %}
+    <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Sair</button>
+</form>
+    {% endif %}
 </body>
 </html>

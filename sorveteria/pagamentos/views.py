@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import Pagamento
 from .forms import PagamentoForm
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def listar_pagamentos(request):
     pagamentos = Pagamento.objects.all()
     return render(request, 'pagamentos/lista_pagamentos.html', {'pagamentos': pagamentos})
-
+@login_required
 def criar_pagamento(request):
     if request.method == 'POST':
         form = PagamentoForm(request.POST)
