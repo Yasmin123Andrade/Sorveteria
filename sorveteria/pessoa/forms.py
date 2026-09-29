@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from .models import Pessoa
 
@@ -102,6 +103,8 @@ class PessoaForm(forms.ModelForm):
 
         if commit:
             pessoa.save()
+            cliente, _ = Group.objects.get_or_create(name='Cliente')
+            pessoa.groups.add(cliente)
 
         return pessoa
 

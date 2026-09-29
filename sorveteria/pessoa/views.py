@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Pessoa
 from .forms import PessoaEditForm, PessoaForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 @login_required
+@permission_required('pessoa.view_pessoa', raise_exception=True)
 def lista_pessoas(request):
     pessoas = Pessoa.objects.all()
 
@@ -13,6 +14,8 @@ def lista_pessoas(request):
     })
 
 
+@login_required
+@permission_required('pessoa.add_pessoa', raise_exception=True)
 def criar_pessoa(request):
 
     if request.method == 'POST':
@@ -32,6 +35,8 @@ def criar_pessoa(request):
     })
 
 
+@login_required
+@permission_required('pessoa.view_pessoa', raise_exception=True)
 def detalhe_pessoa(request, pk):
     pessoa = get_object_or_404(Pessoa, pk=pk)
 
@@ -40,6 +45,8 @@ def detalhe_pessoa(request, pk):
     })
 
 
+@login_required
+@permission_required('pessoa.change_pessoa', raise_exception=True)
 def editar_pessoa(request, pk):
     pessoa = get_object_or_404(Pessoa, pk=pk)
 

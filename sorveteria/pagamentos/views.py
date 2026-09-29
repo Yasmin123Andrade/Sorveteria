@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Pagamento
 from .forms import PagamentoForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 @login_required
+@permission_required('pagamentos.view_pagamento', raise_exception=True)
 def listar_pagamentos(request):
     pagamentos = Pagamento.objects.all()
     return render(request, 'pagamentos/lista_pagamentos.html', {
@@ -13,6 +14,7 @@ def listar_pagamentos(request):
 
 
 @login_required
+@permission_required('pagamentos.add_pagamento', raise_exception=True)
 def criar_pagamento(request):
     if request.method == 'POST':
         form = PagamentoForm(request.POST)
@@ -31,6 +33,8 @@ def criar_pagamento(request):
     })
 
 
+@login_required
+@permission_required('pagamentos.view_pagamento', raise_exception=True)
 def detalhe_pagamento(request, pk):
     pagamento = get_object_or_404(Pagamento, pk=pk)
 
@@ -40,6 +44,7 @@ def detalhe_pagamento(request, pk):
 
 
 @login_required
+@permission_required('pagamentos.change_pagamento', raise_exception=True)
 def editar_pagamento(request, pk):
     pagamento = get_object_or_404(Pagamento, pk=pk)
 

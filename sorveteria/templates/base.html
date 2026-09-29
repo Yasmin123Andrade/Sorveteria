@@ -40,14 +40,22 @@
                         </li>
                         {% if user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'lista_pedidos' %}">Pedidos</a>
+                                {% if perms.pedidos.change_pedidos %}
+                                    <a class="nav-link" href="{% url 'lista_pedidos' %}">Pedidos</a>
+                                {% else %}
+                                    <a class="nav-link" href="{% url 'criar_pedido' %}">Pedidos</a>
+                                {% endif %}
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'lista_pessoas' %}">Clientes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'lista_pagamentos' %}">Pagamentos</a>
-                            </li>
+                            {% if perms.pessoa.view_pessoa %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'lista_pessoas' %}">Clientes</a>
+                                </li>
+                            {% endif %}
+                            {% if perms.pagamentos.view_pagamento %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'lista_pagamentos' %}">Pagamentos</a>
+                                </li>
+                            {% endif %}
                         {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'contact' %}">Contato</a>
