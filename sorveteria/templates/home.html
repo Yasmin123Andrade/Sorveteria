@@ -7,7 +7,23 @@
 
 {% block content %}
     <div class="banner_section layout_padding"><div class="container"><div id="main_slider" class="carousel slide" data-ride="carousel"><div class="carousel-inner"><div class="carousel-item active"><div class="row"><div class="col-md-6"><div class="banner_taital_main"><h1 class="banner_taital">O Melhor Sorvete Artesanal</h1><p class="banner_text">Descubra sabores irresistíveis que vão transformar o seu dia. Feito com ingredientes frescos e muito amor para você se apaixonar a cada mordida!</p><div class="btn_main"><div class="about_bt"><a href="{% url 'about' %}">Quem Somos</a></div><div class="call_bt"><a href="{% url 'contact' %}">Peça Agora</a></div>{% if user.is_authenticated %}<div class="call_bt"><a href="{% url 'lista_pedidos' %}">Ver Pedidos</a></div>{% endif %}</div></div></div><div class="col-md-6"><div class="banner_img"><img src="{% static 'images/banner-img.png' %}" alt="Banner"></div></div></div></div></div></div></div>
-    <div class="about_section layout_padding"><div class="container"><div class="row"><div class="col-md-6"><div class="about_img"><img src="{% static 'images/about-img.png' %}" alt="Sobre a sorveteria"></div></div><div class="col-md-6"><h1 class="about_taital">Nossa Paixão por Sorvetes</h1><p class="about_text">Nossa sorveteria nasceu do desejo de criar momentos mágicos e doces para a sua rotina. Cada receita é elaborada com carinho para proporcionar texturas cremosas e inesquecíveis.</p><div class="read_bt_1"><a href="{% url 'about' %}">Ler Mais</a></div></div></div></div></div>
+    
+    <!-- SEÇÃO SOBRE CORRIGIDA COM O QUADRADO BRANCO E PADDING SEGURO -->
+    <div class="about_section layout_padding">
+       <div class="container">
+          <div class="row align-items-center" style="background: #ffffff; padding: 40px 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+             <div class="col-md-6">
+                <div class="about_img"><img src="{% static 'images/about-img.png' %}" alt="Sobre a sorveteria" class="img-fluid"></div>
+             </div>
+             <div class="col-md-6" style="padding-left: 25px; padding-right: 25px;">
+                <h1 class="about_taital" style="font-size: 32px; line-height: 1.2; margin-bottom: 20px;">Nossa Paixão por Sorvetes</h1>
+                <p class="about_text" style="color: #666; margin-bottom: 25px;">Nossa sorveteria nasceu do desejo de criar momentos mágicos e doces para a sua rotina. Cada receita é elaborada com carinho para proporcionar texturas cremosas e inesquecíveis.</p>
+                <div class="read_bt_1"><a href="{% url 'about' %}">Ler Mais</a></div>
+             </div>
+          </div>
+       </div>
+    </div>
+
     <div class="cream_section layout_padding"><div class="container"><div class="row"><div class="col-md-12"><h1 class="cream_taital">Nossos Sorvetes em Destaque</h1><p class="cream_text">Delícias geladas preparadas especialmente para adocicar o seu dia</p></div></div><div class="cream_section_2"><div class="row">
         <div class="col-md-4"><div class="cream_box"><div class="cream_img"><img src="{% static 'images/img-1.png' %}" alt="Sorvete de morango"></div><div class="price_text">R$ 10</div><h6 class="strawberry_text">Sorvete de Morango</h6><div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div></div></div>
         <div class="col-md-4"><div class="cream_box"><div class="cream_img"><img src="{% static 'images/img-2.png' %}" alt="Sorvete especial"></div><div class="price_text">R$ 10</div><h6 class="strawberry_text">Sorvete Cremoso</h6><div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div></div></div>

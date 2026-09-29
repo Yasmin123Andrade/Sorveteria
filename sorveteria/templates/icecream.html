@@ -5,71 +5,86 @@
 
 {% block content %}
 <!-- Seção de sorvetes início -->
-<div class="cream_section layout_padding">
+<div class="cream_section" style="padding: 60px 0; background-color: transparent; position: relative; overflow: hidden;">
    <div class="container">
-      <div class="row">
-         <div class="col-md-12">
-            <h1 class="cream_taital">Nossos Sorvetes em Destaque</h1>
-            <p class="cream_text">Sabores artesanais e irresistíveis preparados especialmente para você</p>
-         </div>
-      </div>
-      <div class="cream_section_2">
+      
+      <!-- Caixa Branca Principal com posicionamento relativo seguro -->
+      <div style="background: #ffffff; padding: 50px 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; z-index: 2;">
+         
+         <!-- Título e Subtítulo protegidos com estilos inline absolutos para anularem o CSS original -->
          <div class="row">
-            <div class="col-md-4">
-               <div class="cream_box">
-                  <div class="cream_img"><img src="{% static 'images/img-1.png' %}" alt="Sorvete de Morango"></div>
-                  <div class="price_text">R$ 10</div>
-                  <h6 class="strawberry_text">Sorvete de Morango</h6>
-                  <div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div>
-               </div>
+            <div class="col-md-12" style="text-align: center; margin-bottom: 40px; float: none; width: 100%;">
+               <h1 style="font-size: 36px; color: #222222; font-weight: bold; margin-top: 0; margin-bottom: 10px; position: relative;">Nossos Sorvetes em Destaque</h1>
+               <p style="color: #666666; font-size: 16px; margin: 0; position: relative;">Sabores artesanais e irresistíveis preparados especialmente para você</p>
             </div>
-            <div class="col-md-4">
-               <div class="cream_box">
-                  <div class="cream_img"><img src="{% static 'images/img-2.png' %}" alt="Sorvete Cremoso"></div>
-                  <div class="price_text">R$ 10</div>
-                  <h6 class="strawberry_text">Sorvete Cremoso</h6>
-                  <div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div>
+         </div>
+
+         <!-- Primeira linha de produtos -->
+         <div class="cream_section_2" style="margin-bottom: 30px;">
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="cream_box">
+                     <div class="cream_img"><img src="{% static 'images/img-1.png' %}" alt="Sorvete de Morango" class="img-fluid"></div>
+                     <div class="price_text">R$ 10</div>
+                     <h6 class="strawberry_text">Sorvete de Morango</h6>
+                     <div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div>
+                  </div>
                </div>
-            </div>
-            <div class="col-md-4">
-               <div class="cream_box">
-                  <div class="cream_img"><img src="{% static 'images/img-1.png' %}" alt="Sorvete Especial de Morango"></div>
-                  <div class="price_text">R$ 10</div>
-                  <h6 class="strawberry_text">Sorvete Especial de Morango</h6>
-                  <div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div>
+               <div class="col-md-4">
+                  <div class="cream_box">
+                     <div class="cream_img"><img src="{% static 'images/img-2.png' %}" alt="Sorvete Cremoso" class="img-fluid"></div>
+                     <div class="price_text">R$ 10</div>
+                     <h6 class="strawberry_text">Sorvete Cremoso</h6>
+                     <div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="cream_box">
+                     <div class="cream_img"><img src="{% static 'images/img-1.png' %}" alt="Sorvete Especial de Morango" class="img-fluid"></div>
+                     <div class="price_text">R$ 10</div>
+                     <h6 class="strawberry_text">Sorvete Especial de Morango</h6>
+                     <div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div>
+                  </div>
                </div>
             </div>
          </div>
-      </div>
-      <div class="cream_section_2">
-         <div class="row">
-            <div class="col-md-4">
-               <div class="cream_box">
-                  <div class="cream_img"><img src="{% static 'images/img-3.png' %}" alt="Sorvete de Frutas"></div>
-                  <div class="price_text">R$ 10</div>
-                  <h6 class="strawberry_text">Sorvete de Frutas</h6>
-                  <div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div>
+
+         <!-- Segunda linha de produtos -->
+         <div class="cream_section_2" style="margin-bottom: 30px;">
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="cream_box">
+                     <div class="cream_img"><img src="{% static 'images/img-3.png' %}" alt="Sorvete de Frutas" class="img-fluid"></div>
+                     <div class="price_text">R$ 10</div>
+                     <h6 class="strawberry_text">Sorvete de Frutas</h6>
+                     <div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div>
+                  </div>
                </div>
-            </div>
-            <div class="col-md-4">
-               <div class="cream_box">
-                  <div class="cream_img"><img src="{% static 'images/img-4.png' %}" alt="Sorvete de Chocolate"></div>
-                  <div class="price_text">R$ 10</div>
-                  <h6 class="strawberry_text">Sorvete de Chocolate</h6>
-                  <div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div>
+               <div class="col-md-4">
+                  <div class="cream_box">
+                     <div class="cream_img"><img src="{% static 'images/img-4.png' %}" alt="Sorvete de Chocolate" class="img-fluid"></div>
+                     <div class="price_text">R$ 10</div>
+                     <h6 class="strawberry_text">Sorvete de Chocolate</h6>
+                     <div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div>
+                  </div>
                </div>
-            </div>
-            <div class="col-md-4">
-               <div class="cream_box">
-                  <div class="cream_img"><img src="{% static 'images/img-5.png' %}" alt="Sorvete Tropical"></div>
-                  <div class="price_text">R$ 10</div>
-                  <h6 class="strawberry_text">Sorvete Tropical</h6>
-                  <div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div>
+               <div class="col-md-4">
+                  <div class="cream_box">
+                     <div class="cream_img"><img src="{% static 'images/img-5.png' %}" alt="Sorvete Tropical" class="img-fluid"></div>
+                     <div class="price_text">R$ 10</div>
+                     <h6 class="strawberry_text">Sorvete Tropical</h6>
+                     <div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div>
+                  </div>
                </div>
             </div>
          </div>
+
+         <!-- Botão inferior -->
+         <div class="seemore_bt" style="text-align: center; margin-top: 30px;">
+            <a href="#">Ver Mais Sabores</a>
+         </div>
+
       </div>
-      <div class="seemore_bt"><a href="#">Ver Mais Sabores</a></div>
    </div>
 </div>
 <!-- Seção de sorvetes fim -->
