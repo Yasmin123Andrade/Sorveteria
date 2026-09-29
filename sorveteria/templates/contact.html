@@ -1,31 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Contact Us - Sorveteria{% endblock %}
+{% block title %}Contato - Sorveteria{% endblock %}
 
 {% block content %}
-<!-- contact section start -->
+<!-- Seção de contato início -->
 <div class="contact_section layout_padding">
    <div class="container">
       <div class="row">
          <div class="col-md-4">
             <div class="contact_main">
-               <h1 class="contact_taital">Contact Us</h1>
+               <h1 class="contact_taital">Fale Conosco</h1>
                <form action="" method="post">
                   {% csrf_token %}
                   <div class="form-group">
-                     <input type="text" class="email-bt" placeholder="Name" name="name">
+                     <input type="text" class="email-bt" placeholder="Nome" name="name">
                   </div>
                   <div class="form-group">
-                     <input type="email" class="email-bt" placeholder="Email" name="email">
+                     <input type="email" class="email-bt" placeholder="E-mail" name="email">
                   </div>
                   <div class="form-group">
-                     <input type="text" class="email-bt" placeholder="Phone Number" name="phone">
+                     <input type="text" class="email-bt" placeholder="Número de Telefone" name="phone">
                   </div>
                   <div class="form-group">
-                     <textarea class="massage-bt" placeholder="Message" rows="5" id="comment" name="message"></textarea>
+                     <textarea class="massage-bt" placeholder="Mensagem" rows="5" id="comment" name="message"></textarea>
                   </div>
-                  <div class="main_bt"><button type="submit" style="background: none; border: none; color: inherit; font: inherit; cursor: pointer; width: 100%;">SEND</button></div>
+                  <div class="main_bt"><button type="submit" style="background: none; border: none; color: inherit; font: inherit; cursor: pointer; width: 100%;">ENVIAR</button></div>
                </form>
             </div>
          </div>
@@ -34,27 +34,27 @@
                <ul>
                   <li>
                      <a href="#">
-                     <span class="padding_left_10 active"><i class="fa fa-map-marker" aria-hidden="true"></i></span>Making this the first true</a>
+                     <span class="padding_left_10 active"><i class="fa fa-map-marker" aria-hidden="true"></i></span>Av. Principal dos Sorvetes, 123</a>
                   </li>
                   <li>
                      <a href="#">
-                     <span class="padding_left_10"><i class="fa fa-phone" aria-hidden="true"></i></span>Call : +01 1234567890
+                     <span class="padding_left_10"><i class="fa fa-phone" aria-hidden="true"></i></span>Telefone: +55 (11) 98765-4321
                      </a>
                   </li>
                   <li>
                      <a href="#">
-                     <span class="padding_left_10"><i class="fa fa-envelope" aria-hidden="true"></i></span>Email : demo@gmail.com
+                     <span class="padding_left_10"><i class="fa fa-envelope" aria-hidden="true"></i></span>E-mail: contato@sorveteria.com
                      </a>
                   </li>
                </ul>
             </div>
             <div class="mail_main">
-               <h3 class="newsletter_text">Newsletter</h3>
+               <h3 class="newsletter_text">Novidades por E-mail</h3>
                <form action="" method="post">
                   {% csrf_token %}
                   <div class="form-group">
-                     <input type="email" class="update_mail" placeholder="Enter Your Email" name="newsletter_email">
-                     <div class="subscribe_bt"><button type="submit" style="background: none; border: none; color: inherit; font: inherit; cursor: pointer; width: 100%;">Subscribe</button></div>
+                     <input type="email" class="update_mail" placeholder="Digite seu melhor e-mail" name="newsletter_email">
+                     <div class="subscribe_bt"><button type="submit" style="background: none; border: none; color: inherit; font: inherit; cursor: pointer; width: 100%;">Inscrever-se</button></div>
                   </div>
                </form>
             </div>
@@ -70,5 +70,5 @@
       </div>
    </div>
 </div>
-<!-- contact section end -->
+<!-- Seção de contato fim -->
 {% endblock %}
