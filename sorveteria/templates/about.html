@@ -1,51 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Blog / Depoimentos - Sorveteria{% endblock %}
+{% block title %}Sobre | Sorveteria Gelato{% endblock %}
 
 {% block content %}
-<!-- Seção de depoimentos início -->
-<div class="testimonial_section layout_padding">
+<main class="page-shell">
     <div class="container">
-       <div class="row">
-          <div class="col-md-12">
-             <h1 class="testimonial_taital">O que Nossos Clientes Dizem</h1>
-          </div>
-       </div>
-       <div class="testimonial_section_2">
-          <div class="row">
-             <div class="col-md-12">
-                <div class="testimonial_box">
-                   <div id="main_slider" class="carousel slide" data-ride="carousel">
-                      <div class="carousel-inner">
-                         <div class="carousel-item active">
-                            <p class="testimonial_text">"Simplesmente o melhor sorvete que já experimentei! Textura cremosa, sabores marcantes e um atendimento impecável que faz a gente querer voltar todo dia."</p>
-                            <h4 class="client_name">Marri Fen</h4>
-                            <div class="client_img"><img src="{% static 'images/client-img.png' %}" alt="Cliente"></div>
-                         </div>
-                         <div class="carousel-item">
-                            <p class="testimonial_text">"Ambiente super agradável e sorvetes de altíssima qualidade. Dá para sentir o cuidado e o carinho em cada detalhe e em cada sabor!"</p>
-                            <h4 class="client_name">Marri Fen</h4>
-                            <div class="client_img"><img src="{% static 'images/client-img.png' %}" alt="Cliente"></div>
-                         </div>
-                         <div class="carousel-item">
-                            <p class="testimonial_text">"Sou viciado nos sorvetes daqui! Recomendo de olhos fechados para toda a família. É a parada obrigatória do meu fim de semana."</p>
-                            <h4 class="client_name">Marri Fen</h4>
-                            <div class="client_img"><img src="{% static 'images/client-img.png' %}" alt="Cliente"></div>
-                         </div>
-                      </div>
-                      <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
-                      <i class="fa fa-angle-left"></i>
-                      </a>
-                      <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
-                      <i class="fa fa-angle-right"></i>
-                      </a>
-                   </div>
-                </div>
-             </div>
-          </div>
-       </div>
+        <section class="section-heading">
+            <span class="section-kicker">Nossa história</span>
+            <h1>Um pouco de doçura no meio da rotina.</h1>
+            <p>A Sorveteria Gelato nasceu para transformar uma pausa comum em um momento memorável.</p>
+        </section>
+        <div class="contact-layout">
+            <div class="content-card">
+                <h2>Ingredientes honestos, receitas cuidadosas.</h2>
+                <p>Trabalhamos com bases cremosas, frutas e combinações que respeitam o sabor de cada ingrediente. Nosso balcão é um convite para experimentar, conversar e voltar.</p>
+                <a href="{% url 'lista_produtos' %}" class="btn-app">Conhecer o cardápio</a>
+            </div>
+            <div class="content-card">
+                <img src="{% static 'images/about-img.png' %}" alt="Preparação de sorvete">
+            </div>
+        </div>
     </div>
-</div>
-<!-- Seção de depoimentos fim -->
+</main>
 {% endblock %}

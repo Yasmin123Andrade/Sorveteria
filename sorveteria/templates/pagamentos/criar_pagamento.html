@@ -1,9 +1,3 @@
 {% extends 'base.html' %}
-{% load static %}
-
-{% block title %}Novo Pagamento - Sorveteria{% endblock %}
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/forms.css' %}">{% endblock %}
-
-{% block content %}
-<main class="container my-5"><div class="row justify-content-center"><div class="col-lg-8"><section class="card-romyk-form"><header class="card-romyk-header"><h1 class="title-romyk">Novo Pagamento</h1><p class="subtitle-romyk">Registre os dados do pagamento</p></header><div class="card-body p-4 p-md-5"><form method="post" class="romyk-grid-form">{% csrf_token %}{{ form.as_p }}<div class="form-actions"><a href="{% url 'lista_pagamentos' %}" class="btn btn-outline-secondary">Cancelar</a><button type="submit" class="btn-romyk-submit"><i class="fa fa-save mr-2"></i>Salvar</button></div></form></div></section></div></div></main>
-{% endblock %}
+{% block title %}Novo pagamento | Sorveteria Gelato{% endblock %}
+{% block content %}<main class="page-shell"><div class="container"><section class="form-card"><span class="section-kicker">Financeiro</span><h1>Novo pagamento</h1><form method="post"><div class="form-grid">{% csrf_token %}{% for field in form %}<div class="form-field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{{ field.errors }}</div>{% endfor %}</div><div class="form-actions"><a href="{% url 'lista_pagamentos' %}" class="btn-app-secondary">Cancelar</a><button type="submit" class="btn-app">Salvar pagamento</button></div></form></section></div></main>{% endblock %}

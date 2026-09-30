@@ -1,91 +1,35 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Entrar | Sorveteria</title>
-
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Entrar | Sorveteria Gelato</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
 </head>
-
-<body class="login-page">
-
-    <main class="login-card">
-
-        <div class="login-heading">
-
-            <span class="login-mark">S</span>
-
-            <p class="eyebrow">
-                SORVETERIA GELATO
-            </p>
-
-            <h1>
-                Bem-vindo(a)
-            </h1>
-
-            <p class="subtitle">
-                Entre para continuar seus pedidos.
-            </p>
-
-        </div>
-
-
-        <form method="post" action="{% url 'login' %}" class="login-form">
-
+<body class="auth-page">
+    <main class="auth-card">
+        <span class="auth-mark">S</span>
+        <span class="eyebrow">Sorveteria Gelato</span>
+        <h1>Bem-vindo(a)</h1>
+        <p class="subtitle">Entre para continuar seus pedidos.</p>
+        <form method="post" action="{% url 'login' %}" class="auth-form">
             {% csrf_token %}
-
-
-            {% for k, v in form.errors.items %}
-                <p class="error">{{ v }}</p>
-            {% endfor %}
-
-
-            <label for="id_username">
-                Usuário
-            </label>
-
-            <input
-                type="text"
-                name="username"
-                id="id_username"
-            >
-
-
-            <label for="id_password">
-                Senha
-            </label>
-
-            <input
-                type="password"
-                name="password"
-                id="id_password"
-            >
-
-
-            <button type="submit">
-                Entrar
-            </button>
-
-
-            <!-- LINK PARA O CADASTRO -->
-            <p class="register-link">
-                Ainda não possui uma conta?
-
-                <a href="{% url 'criar_pessoa' %}">
-                    Cadastre-se
-                </a>
-            </p>
-
+            {% if form.errors %}<p class="form-errors">Usuário ou senha inválidos. Tente novamente.</p>{% endif %}
+            <div class="register-field">
+                <label for="id_username">Usuário</label>
+                <input type="text" name="username" id="id_username" autofocus required>
+            </div>
+            <div class="register-field">
+                <label for="id_password">Senha</label>
+                <input type="password" name="password" id="id_password" required>
+            </div>
+            <button type="submit" class="btn-app">Entrar</button>
+            <p> Ainda não possui uma conta? <a href="{% url 'criar_pessoa' %}">Cadastre-se</a></p>
         </form>
-
     </main>
-
 </body>
-
 </html>
-

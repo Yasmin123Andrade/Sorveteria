@@ -1,37 +1,69 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Home - Sorveteria{% endblock %}
-{% block header_class %}{% endblock %}
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/pessoas.css' %}">{% endblock %}
+{% block title %}Sorveteria Gelato{% endblock %}
 
 {% block content %}
-   <div class="banner_section layout_padding"><div class="container"><div id="main_slider" class="carousel slide" data-ride="carousel"><div class="carousel-inner"><div class="carousel-item active"><div class="row"><div class="col-md-6"><div class="banner_taital_main"><h1 class="banner_taital">O Melhor Sorvete Artesanal</h1><p class="banner_text">Descubra sabores irresistíveis que vão transformar o seu dia. Feito com ingredientes frescos e muito amor para você se apaixonar a cada mordida!</p><div class="btn_main"><div class="about_bt"><a href="{% url 'about' %}">Quem Somos</a></div><div class="call_bt"><a href="{% url 'contact' %}">Peça Agora</a></div>{% if user.is_authenticated %}<div class="call_bt"><a href="{% if perms.pedidos.change_pedidos %}{% url 'lista_pedidos' %}{% else %}{% url 'criar_pedido' %}{% endif %}">Pedidos</a></div>{% endif %}</div></div></div><div class="col-md-6"><div class="banner_img"><img src="{% static 'images/banner-img.png' %}" alt="Banner"></div></div></div></div></div></div></div>
-    
-    <!-- SEÇÃO SOBRE CORRIGIDA COM O QUADRADO BRANCO E PADDING SEGURO -->
-    <div class="about_section layout_padding">
-       <div class="container">
-          <div class="row align-items-center" style="background: #ffffff; padding: 40px 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-             <div class="col-md-6">
-                <div class="about_img"><img src="{% static 'images/about-img.png' %}" alt="Sobre a sorveteria" class="img-fluid"></div>
-             </div>
-             <div class="col-md-6" style="padding-left: 25px; padding-right: 25px;">
-                <h1 class="about_taital" style="font-size: 32px; line-height: 1.2; margin-bottom: 20px;">Nossa Paixão por Sorvetes</h1>
-                <p class="about_text" style="color: #666; margin-bottom: 25px;">Nossa sorveteria nasceu do desejo de criar momentos mágicos e doces para a sua rotina. Cada receita é elaborada com carinho para proporcionar texturas cremosas e inesquecíveis.</p>
-                <div class="read_bt_1"><a href="{% url 'about' %}">Ler Mais</a></div>
-             </div>
-          </div>
-       </div>
+<section class="hero">
+    <div class="container hero-grid">
+        <div>
+            <span class="eyebrow">Sorveteria Gelato</span>
+            <h1>Pequenos momentos, sabores enormes.</h1>
+            <p>Receitas cremosas, ingredientes escolhidos e uma pausa gostosa para deixar o dia mais leve.</p>
+            <div class="hero-actions">
+                <a href="{% url 'lista_produtos' %}" class="btn-app">Ver sabores</a>
+                {% if user.is_authenticated %}
+                    <a href="{% if perms.pedidos.change_pedidos %}{% url 'lista_pedidos' %}{% else %}{% url 'criar_pedido' %}{% endif %}" class="btn-app-secondary">Fazer pedido</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn-app-secondary">Entrar para pedir</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="hero-art">
+            <img src="{% static 'images/banner-img.png' %}" alt="Taça de sorvete">
+        </div>
     </div>
+</section>
 
-    <div class="cream_section layout_padding"><div class="container"><div class="row"><div class="col-md-12"><h1 class="cream_taital">Nossos Sorvetes em Destaque</h1><p class="cream_text">Delícias geladas preparadas especialmente para adocicar o seu dia</p></div></div><div class="cream_section_2"><div class="row">
-        <div class="col-md-4"><div class="cream_box"><div class="cream_img"><img src="{% static 'images/img-1.png' %}" alt="Sorvete de morango"></div><div class="price_text">R$ 10</div><h6 class="strawberry_text">Sorvete de Morango</h6><div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div></div></div>
-        <div class="col-md-4"><div class="cream_box"><div class="cream_img"><img src="{% static 'images/img-2.png' %}" alt="Sorvete especial"></div><div class="price_text">R$ 10</div><h6 class="strawberry_text">Sorvete Cremoso</h6><div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div></div></div>
-        <div class="col-md-4"><div class="cream_box"><div class="cream_img"><img src="{% static 'images/img-3.png' %}" alt="Sorvete de frutas"></div><div class="price_text">R$ 10</div><h6 class="strawberry_text">Sorvete de Frutas</h6><div class="cart_bt"><a href="#">Adicionar ao Carrinho</a></div></div></div>
-    </div></div><div class="seemore_bt"><a href="{% url 'lista_produtos' %}">Ver Mais</a></div></div></div>
-    <section class="clientes-home-section"><div class="container"><div class="clientes-home-card"><span class="clientes-kicker">Área de gestão</span><h2>Clientes</h2><p>Consulte e cadastre as pessoas atendidas pela sorveteria.</p>{% if user.is_authenticated %}<a href="{% url 'lista_pessoas' %}" class="btn btn-success font-weight-bold"><i class="fa fa-users mr-1"></i>Ver clientes</a>{% else %}<a href="{% url 'login' %}" class="btn btn-success font-weight-bold"><i class="fa fa-lock mr-1"></i>Entrar para acessar</a>{% endif %}</div></div></section>
-    <section class="clientes-home-section pagamentos-home-section"><div class="container"><div class="clientes-home-card"><span class="clientes-kicker">Área de gestão</span><h2>Pagamentos</h2><p>Consulte os pagamentos registrados para os pedidos.</p>{% if user.is_authenticated %}<a href="{% url 'lista_pagamentos' %}" class="btn btn-success font-weight-bold"><i class="fa fa-credit-card mr-1"></i>Ver pagamentos</a>{% else %}<a href="{% url 'login' %}" class="btn btn-success font-weight-bold"><i class="fa fa-lock mr-1"></i>Entrar para acessar</a>{% endif %}</div></div></section>
-    <div class="services_section layout_padding"><div class="container"><div class="row"><div class="col-md-12"><h1 class="services_taital">Nossas Especialidades</h1><p class="services_text">Conheça as opções exclusivas que preparamos para você</p></div></div><div class="services_section_2"><div class="row"><div class="col-md-4"><div class="services_box"><h5 class="tasty_text"><span class="icon_img"><img src="{% static 'images/icon-1.png' %}" alt="Ícone"></span>Sorvete de Cookies</h5><p class="lorem_text">Crocantes pedaços de cookies misturados a uma base ultra cremosa que derrete na boca.</p></div></div><div class="col-md-4"><div class="services_box"><h5 class="tasty_text"><span class="icon_img"><img src="{% static 'images/icon-2.png' %}" alt="Ícone"></span>Sorvete de Chocolate</h5><p class="lorem_text">Sabor marcante e intenso de chocolate nobre para os verdadeiros fãs.</p></div></div><div class="col-md-4"><div class="services_box"><h5 class="tasty_text"><span class="icon_img"><img src="{% static 'images/icon-1.png' %}" alt="Ícone"></span>Sorvete Especial</h5><p class="lorem_text">Uma combinação surpreendente de sabores para inovar o seu paladar.</p></div></div></div></div></div></div>
-    <div class="testimonial_section layout_padding"><div class="container"><div class="row"><div class="col-md-12"><h1 class="testimonial_taital">Depoimentos</h1></div></div><div class="testimonial_section_2"><div class="testimonial_box"><p class="testimonial_text">"O melhor sorvete da cidade inteira! O atendimento é impecável e o sabor é simplesmente viciante. Recomendo de olhos fechados!"</p><h4 class="client_name">Marri Fen</h4><div class="client_img"><img src="{% static 'images/client-img.png' %}" alt="Cliente"></div></div></div></div></div>
-    <div class="contact_section layout_padding"><div class="container"><div class="row"><div class="col-md-4"><div class="contact_main"><h1 class="contact_taital">Fale Conosco</h1><form action="" method="post">{% csrf_token %}<div class="form-group"><input type="text" class="email-bt" placeholder="Nome" name="name"></div><div class="form-group"><input type="email" class="email-bt" placeholder="E-mail" name="email"></div><div class="form-group"><textarea class="massage-bt" placeholder="Mensagem" rows="5" name="message"></textarea></div><div class="main_bt"><button type="submit">ENVIAR</button></div></form></div></div><div class="col-md-8"><div class="location_text"><ul><li><a href="#"><span class="padding_left_10 active"><i class="fa fa-map-marker" aria-hidden="true"></i></span>Av. Principal dos Sorvetes, 123</a></li><li><a href="#"><span class="padding_left_10"><i class="fa fa-phone" aria-hidden="true"></i></span>Telefone: +55 (11) 98765-4321</a></li><li><a href="#"><span class="padding_left_10"><i class="fa fa-envelope" aria-hidden="true"></i></span>E-mail: contato@sorveteria.com</a></li></ul></div></div></div></div></div>
+<section class="section">
+    <div class="container">
+        <div class="section-heading">
+            <span class="section-kicker">Do balcão para a sua mesa</span>
+            <h2>Escolhas que combinam com o seu momento.</h2>
+            <p>Conheça alguns dos sabores que fazem parte do nosso cardápio.</p>
+        </div>
+        <div class="feature-grid">
+            <article class="feature-card">
+                <img src="{% static 'images/img-1.png' %}" alt="Sorvete de morango">
+                <h3>Morango da estação</h3>
+                <p>Leve, frutado e cremoso na medida.</p>
+            </article>
+            <article class="feature-card">
+                <img src="{% static 'images/img-2.png' %}" alt="Sorvete cremoso">
+                <h3>Clássico cremoso</h3>
+                <p>Textura macia para uma pausa sem pressa.</p>
+            </article>
+            <article class="feature-card">
+                <img src="{% static 'images/img-3.png' %}" alt="Sorvete de frutas">
+                <h3>Frutas frescas</h3>
+                <p>Um toque colorido e refrescante no seu dia.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="home-band alt">
+    <div class="container contact-layout">
+        <div>
+            <span class="section-kicker">Feito com cuidado</span>
+            <h2>Um lugar para voltar.</h2>
+            <p>Da primeira colherada ao último detalhe do atendimento, tudo é pensado para você se sentir bem-vindo.</p>
+        </div>
+        <div class="content-card">
+            <h3>Quer conversar com a gente?</h3>
+            <p>Envie uma mensagem, conte sua dúvida ou faça uma sugestão.</p>
+            <a href="{% url 'contact' %}" class="btn-app">Fale conosco</a>
+        </div>
+    </div>
+</section>
 {% endblock %}

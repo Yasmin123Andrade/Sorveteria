@@ -1,8 +1,7 @@
-from django.urls import path, include
+from django.urls import path
 
 from . import views
 
-from django.conf import settings
 
 
 urlpatterns = [
@@ -29,11 +28,6 @@ urlpatterns = [
         '<int:pk>/',
         views.detalhe_pessoa,
         name='detalhe_pessoa'
-    ),
-
-    path(
-        'accounts/',
-        include('django.contrib.auth.urls')
     ),
 
 ]

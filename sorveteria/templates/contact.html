@@ -1,74 +1,43 @@
 {% extends 'base.html' %}
-{% load static %}
 
-{% block title %}Contato - Sorveteria{% endblock %}
+{% block title %}Contato | Sorveteria Gelato{% endblock %}
 
 {% block content %}
-<!-- Seção de contato início -->
-<div class="contact_section layout_padding">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-4">
-            <div class="contact_main">
-               <h1 class="contact_taital">Fale Conosco</h1>
-               <form action="" method="post">
-                  {% csrf_token %}
-                  <div class="form-group">
-                     <input type="text" class="email-bt" placeholder="Nome" name="name">
-                  </div>
-                  <div class="form-group">
-                     <input type="email" class="email-bt" placeholder="E-mail" name="email">
-                  </div>
-                  <div class="form-group">
-                     <input type="text" class="email-bt" placeholder="Número de Telefone" name="phone">
-                  </div>
-                  <div class="form-group">
-                     <textarea class="massage-bt" placeholder="Mensagem" rows="5" id="comment" name="message"></textarea>
-                  </div>
-                  <div class="main_bt"><button type="submit" style="background: none; border: none; color: inherit; font: inherit; cursor: pointer; width: 100%;">ENVIAR</button></div>
-               </form>
+<main class="page-shell">
+    <div class="container">
+        <div class="page-heading">
+            <div>
+                <span class="section-kicker">Estamos por perto</span>
+                <h1>Fale conosco</h1>
+                <p>Envie sua mensagem e nossa equipe responderá em breve.</p>
             </div>
-         </div>
-         <div class="col-md-8">
-            <div class="location_text">
-               <ul>
-                  <li>
-                     <a href="#">
-                     <span class="padding_left_10 active"><i class="fa fa-map-marker" aria-hidden="true"></i></span>Av. Principal dos Sorvetes, 123</a>
-                  </li>
-                  <li>
-                     <a href="#">
-                     <span class="padding_left_10"><i class="fa fa-phone" aria-hidden="true"></i></span>Telefone: +55 (11) 98765-4321
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#">
-                     <span class="padding_left_10"><i class="fa fa-envelope" aria-hidden="true"></i></span>E-mail: contato@sorveteria.com
-                     </a>
-                  </li>
-               </ul>
-            </div>
-            <div class="mail_main">
-               <h3 class="newsletter_text">Novidades por E-mail</h3>
-               <form action="" method="post">
-                  {% csrf_token %}
-                  <div class="form-group">
-                     <input type="email" class="update_mail" placeholder="Digite seu melhor e-mail" name="newsletter_email">
-                     <div class="subscribe_bt"><button type="submit" style="background: none; border: none; color: inherit; font: inherit; cursor: pointer; width: 100%;">Inscrever-se</button></div>
-                  </div>
-               </form>
-            </div>
-            <div class="footer_social_icon">
-               <ul>
-                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                  <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                  <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-               </ul>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
-<!-- Seção de contato fim -->
+        </div>
+        <div class="contact-layout">
+            <section class="content-card">
+                <form method="post" class="contact-form">
+                    {% csrf_token %}
+                    <div class="form-field">
+                        <label for="contact-name">Nome</label>
+                        <input id="contact-name" type="text" name="name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="contact-email">E-mail</label>
+                        <input id="contact-email" type="email" name="email" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="contact-message">Mensagem</label>
+                        <textarea id="contact-message" name="message" rows="6" required></textarea>
+                    </div>
+                    <button class="btn-app" type="submit">Enviar mensagem</button>
+                </form>
+            </section>
+            <aside class="content-card contact-info">
+                <h2>Visite a loja</h2>
+                <p><strong>Endereço</strong><br>Av. Principal dos Sorvetes, 123</p>
+                <p><strong>Telefone</strong><br>+55 (11) 98765-4321</p>
+                <p><strong>E-mail</strong><br>contato@sorveteria.com</p>
+            </aside>
+        </div>
+    </div>
+</main>
 {% endblock %}

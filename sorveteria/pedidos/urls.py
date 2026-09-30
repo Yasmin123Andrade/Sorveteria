@@ -1,8 +1,7 @@
-from django.urls import path, include
+from django.urls import path
 
 from . import views
 
-from django.conf import settings
 
 urlpatterns = [
 
@@ -13,9 +12,5 @@ urlpatterns = [
     path('<int:pk>/editar/', views.editar_pedido, name='editar_pedido'),
 
     path('<int:pk>/', views.detalhe_pedido, name='detalhe_pedido'),
-
-    path('accounts/', include('django.contrib.auth.urls')),
-
-    path('home/', views.home, name='home'),
 
 ]

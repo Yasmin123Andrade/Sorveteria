@@ -14,8 +14,6 @@ def lista_pessoas(request):
     })
 
 
-@login_required
-@permission_required('pessoa.add_pessoa', raise_exception=True)
 def criar_pessoa(request):
 
     if request.method == 'POST':
